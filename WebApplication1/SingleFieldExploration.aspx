@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="~/Two-Field-Exploration.aspx.cs" MasterPageFile="~/DataExplorer.Master" Inherits="WebApplication1.Front" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SingleFieldExploration.aspx.cs" MasterPageFile="~/DataExplorer.Master" Inherits="WebApplication1.SingleFieldExploration" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
@@ -17,16 +17,7 @@
             <asp:ListItem Text="--Select One--" Value="" />
         </asp:DropDownList>
     </p>
-    <p>Choose a numeric category:&nbsp;
-        <asp:DropDownList ID="NumCategories" runat="server" DataSourceID="Countables" DataValueField="Column name" AppendDataBoundItems="true">
-            <asp:ListItem Text="--Select One--" Value="" />
-        </asp:DropDownList>
-    </p>
 
-    <%-- Summation of numeric field box --%>
-    <asp:CheckBox id="SumButton" runat="server" Text="Sum the numeric Field?"/>
-
-    <br />
     <%-- Submission button for requests --%>
     <asp:Button ID="sumbitLoadRequest" runat="server" OnClick="LoadData" Text="Run"/>
 
@@ -61,15 +52,6 @@
         SelectCommand="SELECT COLUMN_NAME AS [Column name]
                        FROM information_schema.columns
                        WHERE (DATA_TYPE != 'geometry')
-                       AND TABLE_NAME = 'COMPOSITE_BASE_PIPE_PZ';" >
-    </asp:SqlDataSource>
-
-    <%--  This is a table of the number fields (that can use SUM) --%>
-    <asp:SqlDataSource ID="Countables" runat="server" 
-        ConnectionString ="<%$ ConnectionStrings:Composite_base_pipe_pz %>" 
-        SelectCommand="SELECT COLUMN_NAME AS [Column name]
-                       FROM information_schema.columns
-                       WHERE (DATA_TYPE = 'int' OR DATA_TYPE = 'numeric' OR DATA_TYPE = 'smallint')
                        AND TABLE_NAME = 'COMPOSITE_BASE_PIPE_PZ';" >
     </asp:SqlDataSource>
 

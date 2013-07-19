@@ -60,6 +60,8 @@
   <ItemGroup>
     <Content Include="App_Themes\Theme1\MasterStyles.css" />
     <Content Include="MainPage.aspx" />
+    <Content Include="RecordExploration.aspx" />
+    <Content Include="SingleFieldExploration.aspx" />
     <Content Include="Two-Field-Exploration.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -72,6 +74,20 @@
     </Compile>
     <Compile Include="MainPage.aspx.designer.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecordExploration.aspx.cs">
+      <DependentUpon>RecordExploration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecordExploration.aspx.designer.cs">
+      <DependentUpon>RecordExploration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SingleFieldExploration.aspx.cs">
+      <DependentUpon>SingleFieldExploration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SingleFieldExploration.aspx.designer.cs">
+      <DependentUpon>SingleFieldExploration.aspx</DependentUpon>
     </Compile>
     <Compile Include="Two-Field-Exploration.aspx.cs">
       <DependentUpon>Two-Field-Exploration.aspx</DependentUpon>
