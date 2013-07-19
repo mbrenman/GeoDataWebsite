@@ -9,6 +9,8 @@
     <%-- Submission button for requests --%>
     <asp:Button ID="sumbitLoadRequest" runat="server" OnClick="LoadData" Text="Run"/>
 
+    <%-- NEED TO ADD DATA TABLE HERE AND ADD SQL IN CODE BEHIND FILE --%>
+
     <%-- SQL DATA SOURCES --%>
     <%--  This is a table of the column names --%>
     <asp:SqlDataSource ID="Category_Source" runat="server" 
