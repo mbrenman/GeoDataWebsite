@@ -1,16 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exploration.aspx.cs" MasterPageFile="~/DataExplorer.Master" Inherits="WebApplication1.Exploration" MaintainScrollPositionOnPostback="true" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Exploration.aspx.cs" MasterPageFile="~/DataExplorer.Master" Inherits="WebApplication1.Exploration" MaintainScrollPositionOnPostback="true" %>
 <%--  --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="PageContent" runat="server">
     <div id="exploration">
+
+        <%-- A button to launch the excel pivot table from the P drive --%>
+        <asp:Button ID="ExcelLauncher" runat="server" Text="Open Excel Pivot Table" OnClick="LaunchExcel" />
+
         <fieldset>
             <legend>Where Clause</legend>
         <%-- Error label for failing to open the excel pivot table --%>
         <asp:Label ID="errorLabel" runat="server" BackColor="Red" />
         <%-- A label for which restrictions have been placed on the query --%>
         <asp:Label ID="where" runat="server" />
-
-        <%-- A button to launch the excel pivot table from the P drive --%>
-        <asp:Button ID="ExcelLauncher" runat="server" Text="Open Excel Pivot Table" OnClick="LaunchExcel" />
 
         <%-- The set of buttons and lists that control adding a limit to the query --%>
         <p>Which column would you like to limit</p>
@@ -27,8 +28,9 @@
             <asp:ListItem Text="--Select One--" Value="--Select One--" />
         </asp:DropDownList>
 
-        <br />
-        <br />
+        <br /><br />
+        <asp:Button ID="Parens" runat="server" OnClick="Parens_Click" />
+        <br /><br />
         <asp:RadioButtonList ID="AndOrList" runat="server" RepeatDirection="Horizontal" Visible="false">
             <asp:ListItem Selected="True" Text="AND"></asp:ListItem>
             <asp:ListItem Selected="False" Text="OR"></asp:ListItem>
