@@ -1,4 +1,9 @@
-﻿.header {
+﻿* {
+    /* Site-wide font settings */
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+}
+
+.header {
     border: thick double #202020;
     padding: 1cm;
     background-color: #a3a3a3;
@@ -7,6 +12,10 @@
     font-style: italic;
     font-size: x-large;
     color: #FFFFFF;
+}
+
+legend {
+    color:#FFFFFF;
 }
 
 #page {
@@ -26,10 +35,24 @@ body {
     background-color: #a3a3a3;
     text-align: center;
     float:left;
+    padding-left:10px; /* Add extra space in box */
+    padding-top:10px;
+    width: 180px; /* To keep page structure because
+                     of float tag */
+    height: 100px;
+    margin-right:20px; /* Extra space before content */
 }
 
 .content {
-    padding-left: 20px;
+    float:left; /* Get close to menu, but don't overlap */
+}
+
+#recordTable {
+    float:left;
+    padding-left: 1cm;
+}
+
+#exploration {
     float:left;
 }
 

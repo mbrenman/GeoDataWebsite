@@ -10,25 +10,16 @@
 namespace WebApplication1 {
     
     
-    public partial class RecordExploration {
+    public partial class SingleFieldExploration {
         
         /// <summary>
-        /// MunicipalityList control.
+        /// Categories control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList MunicipalityList;
-        
-        /// <summary>
-        /// ColBoxes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList ColBoxes;
+        protected global::System.Web.UI.WebControls.DropDownList Categories;
         
         /// <summary>
         /// sumbitLoadRequest control.
@@ -40,13 +31,31 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button sumbitLoadRequest;
         
         /// <summary>
-        /// RecordTable control.
+        /// Data_Chart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView RecordTable;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Data_Chart;
+        
+        /// <summary>
+        /// ErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        
+        /// <summary>
+        /// DataTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView DataTable;
         
         /// <summary>
         /// Category_Source control.
@@ -56,15 +65,6 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Category_Source;
-        
-        /// <summary>
-        /// Municipalities control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Municipalities;
         
         /// <summary>
         /// Data_Source control.

@@ -10,16 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class SingleFieldExploration {
-        
-        /// <summary>
-        /// time control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label time;
+    public partial class Front {
         
         /// <summary>
         /// Categories control.
@@ -29,6 +20,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Categories;
+        
+        /// <summary>
+        /// NumCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList NumCategories;
+        
+        /// <summary>
+        /// SumButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox SumButton;
         
         /// <summary>
         /// sumbitLoadRequest control.
@@ -74,6 +83,15 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource Category_Source;
+        
+        /// <summary>
+        /// Countables control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource Countables;
         
         /// <summary>
         /// Data_Source control.

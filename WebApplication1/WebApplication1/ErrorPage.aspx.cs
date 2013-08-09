@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class MainPage : System.Web.UI.Page
+    public partial class ErrorPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Exception ex = (Exception)Session["Exception"];
+            errorLabel.Text = "Error Message: " + ex.Message;
         }
     }
 }

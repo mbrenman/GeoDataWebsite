@@ -4,6 +4,6 @@
       <siteMapNode url="~/MainPage.aspx" title="Main Page" description="Main Page" />
       <siteMapNode url="~/SingleFieldExploration.aspx" title="Single Field Exploration" description="Single Field Exploration" />
       <siteMapNode url="~/Two-Field-Exploration.aspx" title="Two Field Exploration"  description="Two Field Exploration" />
-      <siteMapNode url="~/RecordExploration.aspx" title="Record Exploration"  description="Record Exploration" />
+      <siteMapNode url="~/Exploration.aspx" title="Record Exploration"  description="Record Exploration" />
     </siteMapNode>
 </siteMap>
