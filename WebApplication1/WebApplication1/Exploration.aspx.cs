@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +15,8 @@ namespace WebApplication1
         //File path to the pivot table that can be launched in excel from a button on the user end
         private const string pivotTablePath = "P:\\QA\\QA-CompositeBasePipePZ.xlsx";
         private const string Count = "Record_Count";
-
+        private string open = "Open Parenthesis";
+        private string close = "Close Parenthesis";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +27,7 @@ namespace WebApplication1
                 whereClause = ""; //Make sure this is always cleared at first load, but not deleted by the controls
                 Category_Source.ConnectionString = Globals.conString;
                 Category_Source.SelectCommand = string.Format("SELECT COLUMN_NAME AS [Column name] FROM information_schema.columns WHERE (DATA_TYPE != 'geometry') AND TABLE_NAME = '{0}';", Globals.tableName);
+                Parens.Text = open;
             }
         }
 
@@ -38,6 +40,11 @@ namespace WebApplication1
                 string orderClause = getOrderClause();
                 string groupClause = getGroupClause();
                 string countClause = getCountClause();
+
+                if (Parens.Text == close) {
+                    //Try to close mismatched parens, may still throw an error
+                    whereClause += ")";
+                }
 
                 Data_Source.SelectCommand = String.Format("SELECT {0} {1} FROM {2} {3} {4} {5};", cols, countClause, Globals.tableName, whereClause, groupClause, orderClause);
                 
@@ -136,12 +143,15 @@ namespace WebApplication1
             if (whereClause == "")
             {
                 //For first limit added after initialization or a clear
-                whereClause = String.Format("WHERE {0} = '{1}' ", ColDDL.SelectedValue, ValDDL.SelectedValue);
+                whereClause = String.Format("WHERE {0} = '{1}'", ColDDL.SelectedValue, ValDDL.SelectedValue);
+            }
+            else if (endsInParen()) {
+                whereClause += String.Format("{0} = '{1}'", ColDDL.SelectedValue, ValDDL.SelectedValue);
             }
             else
             {
                 //For adding any limit other than the first one
-                whereClause += String.Format("{0} {1} = '{2}' ", AndOrList.SelectedItem.Text, ColDDL.SelectedValue, ValDDL.SelectedValue);
+                whereClause += String.Format(" {0} {1} = '{2}'", AndOrList.SelectedItem.Text, ColDDL.SelectedValue, ValDDL.SelectedValue);
             }
             where.Text = whereClause + "<br />"; //Refreshes text to contain current class member var value
             AndOrList.Visible = true;
@@ -392,6 +402,47 @@ namespace WebApplication1
             Exception ex = Server.GetLastError();
             Session["Exception"] = ex;
             Response.Redirect("ErrorPage.aspx");
+        }
+
+        protected void Parens_Click(object sender, EventArgs e)
+        {
+            if (Parens.Text == open)
+            {
+                if (endsInParen()) {
+                    //Allows user to add a AND/OR with another paren
+                    whereClause += String.Format(" {0} (", AndOrList.SelectedValue);
+                    AndOrList.Visible = false;
+                }
+                else if (whereClause == "")
+                {
+                    //clause needs to start with WHERE
+                    whereClause += "WHERE (";
+                }
+                else
+                {
+                    //Default case
+                    whereClause += " (";
+                }
+                Parens.Text = close;
+                AddLimitBtn.Visible = true;
+            }
+            else {
+                whereClause += ")";
+                //After a right paren, there needs to be another clause before a limit
+                AddLimitBtn.Visible = false;
+                Parens.Text = open;
+            }
+            whereClause = whereClause.Replace("()", "");
+            where.Text = whereClause + "<br />"; //Refreshes text to contain current class member var value
+        }
+
+        private bool endsInParen() {
+            if (whereClause != "") { //Only when there is a whereClause
+                if (whereClause[whereClause.Length - 1] == '(' || whereClause[whereClause.Length - 1] == ')') {
+                    return true;
+                }
+            } 
+            return false;
         }
     }
 }
